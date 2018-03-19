@@ -69,6 +69,10 @@ class Dispersion(unittest.TestCase):
         my_data = [10, 20, 12, 17, 16]
         my_set = TaylorSet(my_data)
         self.assertEqual(my_set.percentile(.25), 11)
+    def test_interquartile_range(self):
+        my_data = [10, 20, 12, 17, 16]
+        my_set = TaylorSet(my_data)
+        self.assertEqual(my_set.interquartile_range(), 7.5)
 
 class ZScore(unittest.TestCase):
     def test_population_z_score(self):

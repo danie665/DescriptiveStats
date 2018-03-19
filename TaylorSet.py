@@ -51,7 +51,7 @@ class TaylorSet():
 
     def interquartile_range(self):
         """ returns the interquartile range of an array """
-        return 0
+        return self.percentile(.75) - self.percentile(.25)
 
     def population_variance(self):
         """ returns population variance of an array """

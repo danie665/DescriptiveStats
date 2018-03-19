@@ -20,7 +20,6 @@ class TaylorSet():
         else:
             place = int( ( len(sorted_array) + 1 ) / 2 )
             return sorted_array[place-1]
-        print(self.data)
 
     def range(self):
         """ return the range of the data """

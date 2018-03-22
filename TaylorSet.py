@@ -1,10 +1,18 @@
 class TaylorSet():
+
     """ a simple descriptive statistics model """
 
     def __init__(self, data):
         """ initialize data """
         self.data = data
         self.data = [float(x) for x in self.data]
+        self.y_data = []
+
+    def _lists_uniform?(self):
+        """ ensures that both input lists are the same length """
+        if len(self.y_data) == len(self.data):
+            return True
+        return False
 
     def mean(self):
         """ returns the arithmetic mean of an array """
@@ -21,12 +29,37 @@ class TaylorSet():
             place = int( ( len(sorted_array) + 1 ) / 2 )
             return sorted_array[place-1]
 
+    def mode(self):
+        """ return the mode of the data """
+        tally_dict = {}
+        i = 0
+        while i < len(self.data):
+            if self.data[i] in tally_dict:
+                tally_dict[self.data[i]] += 1
+            else:
+                tally_dict[self.data[i]] = 1
+            i += 1
+        max_occ = 0
+        for key, value in tally_dict.items():
+            if value > max_occ:
+                max_occ = value
+        modes = []
+        for key, value in tally_dict.items():
+            if value == max_occ:
+                modes.append(key)
+        if len(modes) == 1:
+            return modes[0]
+        else:
+            return modes
+
     def range(self):
         """ return the range of the data """
         return max(self.data) - min(self.data)
 
     def weighted_mean(self):
         """ returns weighted mean from an array of arrays """
+        if not _lists_uniform?:
+            raise ValueError
         return 0
 
     def geometric_mean(self):

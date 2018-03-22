@@ -35,6 +35,14 @@ class Center(unittest.TestCase):
         my_data = [ 1.10, 1.15, 1.21, 0.51, 1.05 ]
         my_set = TaylorSet(my_data)
         self.assertAlmostEqual(my_set.geometric_mean(), .9610, 4)
+    def test_easy_mode(self):
+        my_data = [ 1, 1, 2, 3 ]
+        my_set = TaylorSet(my_data)
+        self.assertEqual(my_set.mode(), 1)
+    def test_hard_mode(self):
+        my_data = [ 1, 1, 2, 2, 3 ]
+        my_set = TaylorSet(my_data)
+        self.assertEqual(my_set.mode(), [ 1, 2 ])
 
 class Dispersion(unittest.TestCase):
     def test_range(self):

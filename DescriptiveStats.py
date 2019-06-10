@@ -8,7 +8,7 @@ class TaylorSet():
         self.data = [float(x) for x in self.data]
         self.y_data = []
 
-    def _lists_uniform?(self):
+    def _lists_uniform(self):
         """ ensures that both input lists are the same length """
         if len(self.y_data) == len(self.data):
             return True
@@ -58,7 +58,7 @@ class TaylorSet():
 
     def weighted_mean(self):
         """ returns weighted mean from an array of arrays """
-        if not _lists_uniform?:
+        if not _lists_uniform():
             raise ValueError
         return 0
 

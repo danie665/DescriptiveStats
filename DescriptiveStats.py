@@ -1,4 +1,4 @@
-class TaylorSet():
+class DescriptiveStats():
 
     """ a simple descriptive statistics model """
 

@@ -1,2 +1,2 @@
-# TaylorSet
-Taylor's simple descriptive statistics module
+# DescriptiveStats
+Simple Python data analysis module

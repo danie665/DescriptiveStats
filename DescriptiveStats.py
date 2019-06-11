@@ -2,11 +2,18 @@ class DescriptiveStats():
 
     """ a simple descriptive statistics model """
 
-    def __init__(self, data):
+    def __init__(self, data, data_2=[], data_3=[], data_4=[], data_5=[]):
         """ initialize data """
         self.data = data
         self.data = [float(x) for x in self.data]
-        self.y_data = []
+        self.data_2 = data_2
+        self.data_2 = [float(x) for x in self.data_2]
+        self.data_3 = data_3
+        self.data_3 = [float(x) for x in self.data_3]
+        self.data_4 = data_4
+        self.data_4 = [float(x) for x in self.data_4]
+        self.data_5 = data_5
+        self.data_5 = [float(x) for x in self.data_5]
 
     def _lists_uniform(self):
         """ ensures that both input lists are the same length """
@@ -135,12 +142,4 @@ class DescriptiveStats():
 
     def population_covariance(self):
         """ returns the population covariance of an array """
-        return 0
-
-    def pearson_sample(self):
-        """ returns the pearson product moment correlation coefficient for sample data """
-        return 0
-
-    def pearson_population(self):
-        """ returns the pearson product moment correlation coefficient for population data """
         return 0

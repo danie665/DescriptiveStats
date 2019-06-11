@@ -93,4 +93,16 @@ class ZScore(unittest.TestCase):
         my_set = DescriptiveStats(data_1=my_data)
         self.assertEqual(my_set.sample_z_score(0, data=my_set.data_1), -1.25)
 
+class Covariance(unittest.TestCase):
+    def test_sample_covariance(self):
+        my_data_1 = [2, 5, 1, 3, 4, 1, 5, 3, 4, 2]
+        my_data_2 = [50, 57, 41, 54, 54, 38, 63, 48, 59, 46]
+        my_set = DescriptiveStats(data_1=my_data_1, data_2=my_data_2)
+        self.assertEqual(my_set.sample_covariance(my_set.data_1, my_set.data_2), 11)
+    def test_population_covariance(self):
+        my_data_1 = [2, 5, 1, 3, 4, 1, 5, 3, 4, 2]
+        my_data_2 = [50, 57, 41, 54, 54, 38, 63, 48, 59, 46]
+        my_set = DescriptiveStats(data_1=my_data_1, data_2=my_data_2)
+        self.assertEqual(my_set.population_covariance(my_set.data_1, my_set.data_2), 9.9)
+
 unittest.main()

@@ -16,13 +16,13 @@ class DescriptiveStats():
         self.data_5 = [float(x) for x in self.data_5]
 
     def _lists_uniform(self):
-        """ ensures that both input lists are the same length """
+        """ ensures that input lists are the same length """
         length = len(self.data_1)
         if (
-                (len(data_2) == length or len(data_2) == 0) and
-                (len(data_3) == length or len(data_3) == 0) and
-                (len(data_4) == length or len(data_4) == 0) and
-                (len(data_5) == length or len(data_5) == 0)
+                (len(self.data_2) == length or len(self.data_2) == 0) and
+                (len(self.data_3) == length or len(self.data_3) == 0) and
+                (len(self.data_4) == length or len(self.data_4) == 0) and
+                (len(self.data_5) == length or len(self.data_5) == 0)
             ):
             return True
         return False
@@ -149,16 +149,27 @@ class DescriptiveStats():
 
     def sample_covariance(self, data_1=[], data_2=[]):
         """ returns the sample covariance of an array """
-        if not _lists_uniform():
+        if not self._lists_uniform():
             raise ValueError
-        my_mean_1 = self.mean(data=data_1)
-        my_mean_2 = self.mean(data=data_2)
-        my_covariance = 0
+        mean_1 = self.mean(data=data_1)
+        mean_2 = self.mean(data=data_2)
+        covariance = 0
         i = 0
-        while (i < len(self.data_1)):
+        while (i < len(data_1)):
+            covariance += ( data_1[i] - mean_1 ) * ( data_2[i] - mean_2 )
             i += 1
-        return 0
+        return covariance / ( len(data_1) - 1)
 
     def population_covariance(self, data_1=[], data_2=[]):
         """ returns the population covariance of an array """
-        return 0
+        if not self._lists_uniform():
+            raise ValueError
+        mean_1 = self.mean(data=data_1)
+        mean_2 = self.mean(data=data_2)
+        covariance = 0
+        i = 0
+        while (i < len(data_1)):
+            covariance += ( data_1[i] - mean_1 ) * ( data_2[i] - mean_2 )
+            i += 1
+        return covariance / len(data_1)
+

@@ -17,7 +17,13 @@ class DescriptiveStats():
 
     def _lists_uniform(self):
         """ ensures that both input lists are the same length """
-        if len(self.y_data) == len(self.data):
+        length = len(data)
+        if (
+                (len(data_2) == length or len(data_2) == 0) and
+                (len(data_3) == length or len(data_3) == 0) and
+                (len(data_4) == length or len(data_4) == 0) and
+                (len(data_5) == length or len(data_5) == 0)
+            ):
             return True
         return False
 
@@ -138,6 +144,8 @@ class DescriptiveStats():
 
     def sample_covariance(self):
         """ returns the sample covariance of an array """
+        i = 0
+        while (i < 
         return 0
 
     def population_covariance(self):

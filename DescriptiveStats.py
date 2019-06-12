@@ -187,5 +187,5 @@ class DescriptiveStats():
             i += 1
         beta = n / d
         alpha = mean_1 - beta * mean_2
-        print("y = " + str(alpha) + " + " + str(beta) + "x")
+        return [alpha, beta]
 

@@ -105,4 +105,12 @@ class Covariance(unittest.TestCase):
         my_set = DescriptiveStats(data_1=my_data_1, data_2=my_data_2)
         self.assertEqual(my_set.population_covariance(my_set.data_1, my_set.data_2), 9.9)
 
+class Regression(unittest.TestCase):
+    def test_beta(self):
+        my_y = [58, 105, 88, 118, 117, 137, 157, 169, 149, 202]
+        my_x = [2, 6, 8, 8, 12, 16, 20, 20, 22, 26]
+        my_set = DescriptiveStats(data_1=my_y, data_2=my_x)
+        my_set.simple_linear_regression(data_1=my_set.data_1, data_2=my_set.data_2)
+
+
 unittest.main()

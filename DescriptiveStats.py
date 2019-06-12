@@ -176,6 +176,8 @@ class DescriptiveStats():
     def simple_linear_regression(self, data_1=[], data_2=[]):
         """ returns linear regression of the first array regressed on the second array """
         """ TODO: Expand to multiple linear regression """
+        mean_1 = self.mean(data=data_1)
+        mean_2 = self.mean(data=data_2)
         i = 0
         beta = self.population_covariance(data_1, data_2) / self.population_variance(data_2)
         alpha = mean_1 - beta * mean_2

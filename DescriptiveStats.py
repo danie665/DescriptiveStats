@@ -179,13 +179,7 @@ class DescriptiveStats():
         mean_1 = self.mean(data=data_1)
         mean_2 = self.mean(data=data_2)
         i = 0
-        n = 0
-        d = 0
-        while (i < len(self.data_1)):
-            n += (data_2[i] - mean_2) * (data_1[i] - mean_1)
-            d += (data_2[i] - mean_2) ** 2
-            i += 1
-        beta = n / d
+        beta = self.population_covariance(data_1, data_2) / self.population_variance(data_2)
         alpha = mean_1 - beta * mean_2
         return [alpha, beta]
 

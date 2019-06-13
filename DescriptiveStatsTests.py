@@ -115,6 +115,4 @@ class Regression(unittest.TestCase):
             [60.0, 5.0]
         )
         
-
-
 unittest.main()

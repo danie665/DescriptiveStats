@@ -121,6 +121,69 @@ class DescriptiveStats():
             i += 1
         return my_sum / ( len(data) - 1 )
 
+    def population_skewness(self, data=[]):
+        """ returns population skewness of an array """
+        my_mean = self.mean(data=data)
+        my_std = self.population_standard_deviation(data=data)
+        my_sum = 0
+        i = 0
+        while i < len(data):
+            my_sum += ( data[i] - my_mean ) ** 3
+            i += 1
+        return my_sum / (len(data) * my_std ** 3)
+
+    def sample_skewness(self, data=[]):
+        """ returns sample skewness of an array """
+        my_mean = self.mean(data=data)
+        my_std = self.sample_standard_deviation(data=data)
+        my_sum = 0
+        i = 0
+        while i < len(data):
+            my_sum += ( ( data[i] - my_mean ) / my_std ) ** 3
+            i += 1
+        return ( len(data) / ( (len(data) - 1) * (len(data) - 2) ) ) * my_sum
+
+    def population_kurtosis(self, data=[]):
+        """ returns population kurtosis of an array """
+        my_mean = self.mean(data=data)
+        my_sum = 0
+        my_sum_two = 0
+        i = 0
+        while i < len(data):
+            my_sum += (data[i] - my_mean) ** 4
+            my_sum_two += (data[i] - my_mean) ** 2
+            i += 1
+        return my_sum / my_sum_two ** 2
+
+    def sample_kurtosis(self, data=[]):
+        """ returns sample kurtosis of an array """
+        my_mean = self.mean(data=data)
+        my_std = self.sample_standard_deviation(data=data)
+        my_sum = 0
+        i = 0
+        while i < len(data):
+            my_sum += ( (data[i] - my_mean) / my_std ) ** 4
+            i += 1
+        my_coef = (len(data)*(len(data)+1)) / (
+            (len(data)-1)*(len(data)-2)*(len(data)-3)
+        )
+        return my_coef * my_sum
+
+    def sample_excess_kurtosis(self, data=[]):
+        """ returns sample kurtosis of an array """
+        my_mean = self.mean(data=data)
+        my_std = self.sample_standard_deviation(data=data)
+        my_sum = 0
+        i = 0
+        while i < len(data):
+            my_sum += ( (data[i] - my_mean) / my_std ) ** 4
+            i += 1
+        my_coef = (len(data)*(len(data)+1)) / (
+            (len(data)-1)*(len(data)-2)*(len(data)-3)
+        )
+        my_standardizer = (3*(len(data)-1)**2) / ((len(data)-2)*(len(data)-3))
+        return my_coef * my_sum - my_standardizer
+
     def population_standard_deviation(self, data=[]):
         """ returns the population standard deviation of an array """
         return self.population_variance(data=data) ** 0.5

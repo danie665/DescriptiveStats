@@ -65,6 +65,26 @@ class Dispersion(unittest.TestCase):
         my_data = [10, 20, 12, 17, 16]
         my_set = DescriptiveStats(data_1=my_data)
         self.assertEqual(my_set.sample_standard_deviation(my_set.data_1), 4)
+    def test_population_skewness(self):
+        my_data = [1, 8, 8, 8, 8]
+        my_set = DescriptiveStats(data_1=my_data)
+        self.assertAlmostEqual(my_set.population_skewness(my_set.data_1), -1.5)
+    def test_sample_skewness(self):
+        my_data = [1, 1, 1, 1, 8]
+        my_set = DescriptiveStats(data_1=my_data)
+        self.assertAlmostEqual(my_set.sample_skewness(my_set.data_1), 2.236067977)
+    def test_population_kurtosis(self):
+        my_data = [1, 1, 5, 5, 5, 10, 10]
+        my_set = DescriptiveStats(data_1=my_data)
+        self.assertAlmostEqual(my_set.population_kurtosis(my_set.data_1), 0.25074528)
+    def test_sample_kurtosis(self):
+        my_data = [1, 1, 5, 5, 5, 10, 10]
+        my_set = DescriptiveStats(data_1=my_data)
+        self.assertAlmostEqual(my_set.sample_kurtosis(my_set.data_1), 4.21252077)
+    def test_sample_excess_kurtosis(self):
+        my_data = [1, 1, 5, 5, 5, 10, 10]
+        my_set = DescriptiveStats(data_1=my_data)
+        self.assertAlmostEqual(my_set.sample_excess_kurtosis(my_set.data_1), -1.18747922)
     def test_population_coefficient_of_variation(self):
         my_data = [10, 20, 12, 17, 16]
         my_set = DescriptiveStats(data_1=my_data)
